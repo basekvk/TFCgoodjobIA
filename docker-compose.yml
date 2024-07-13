@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  cybersecurity_ai:
+    build: .
+    container_name: cybersecurity_ai
+    volumes:
+      - ./data:/app/data
+      - ./models:/app/models
+    # network_mode: "host" # Usa esta opción si necesitas acceso directo a la red del host (solo en sistemas Unix)
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/bpf
+    ports:
+      - "5000:5000"  # Si estás exponiendo un puerto para la GUI
